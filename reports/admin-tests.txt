@@ -1,0 +1,30 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> shogran-valley-nextjs@1.0.0 test
+> node --test tests/*.test.mjs
+
+✔ Stay estimates cross month boundaries and multiply rooms once (1.884025ms)
+✔ Impossible dates, reversed stays, past dates and long stays are rejected (0.501816ms)
+✔ Capacity and room limits are enforced (0.240883ms)
+✔ Unknown rates stay unquoted and seasonal rules are not invented (0.167242ms)
+▶ Production migration and administration
+  ✔ Every published imported URL serves a page (4446.7366ms)
+  ✔ Taxonomy archive routes work (4490.369252ms)
+  ✔ Legacy redirects retain paths and query strings (1272.527336ms)
+  ✔ Sitemap, robots and unresolved URLs are truthful (183.347412ms)
+  ✔ Private data requires authentication and origin checking (203.754173ms)
+  ✔ Booking enquiry validates and persists (118.20269ms)
+  ✔ Hotel enquiries validate room, dates and capacity; server computes the estimate (121.80658ms)
+  ✔ Bundled originals and on-demand thumbnail routes work (45.470141ms)
+  ✔ Image replacement preserves original and thumbnail URLs (38.841795ms)
+  ✔ Content edits and URL changes produce working redirects (175.583903ms)
+  ✔ Data survives server restart and logout revokes session (616.377572ms)
+✔ Production migration and administration (12203.168974ms)
+ℹ tests 16
+ℹ suites 0
+ℹ pass 16
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 12380.924295

@@ -1,0 +1,69 @@
+/* hotel-admin.css */
+#titlediv{display:none !important}
+.sh-meta-box{padding:6px 2px}
+.sh-section-label{font-size:0.78rem;font-weight:800;color:#1a3c2e;text-transform:uppercase;letter-spacing:0.8px;margin:16px 0 10px;padding-bottom:6px;border-bottom:2px solid #e8f5e9}
+.sh-section-label-sm{font-size:0.72rem;font-weight:800;color:#4a8c5c;text-transform:uppercase;letter-spacing:0.5px;margin:12px 0 8px}
+.sh-field-row{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+.sh-field{flex:1;min-width:160px;display:flex;flex-direction:column;gap:4px}
+.sh-field-full{flex:100%}
+.sh-field-2x{flex:2}
+.sh-field-addon{flex:0 0 calc(25% - 9px);min-width:150px}
+.sh-label{font-size:0.75rem;font-weight:800;color:#374151;text-transform:uppercase;letter-spacing:0.4px}
+.sh-hint{font-size:0.72rem;color:#9ca3af;margin:2px 0 0;line-height:1.4}
+.sh-hint-inline{font-size:0.7rem;color:#9ca3af;font-weight:400;text-transform:none;letter-spacing:0}
+.sh-req{color:#e53e3e}
+.sh-input,.sh-select,.sh-textarea{padding:8px 11px;border:2px solid #e5e7eb;border-radius:7px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:0.86rem;color:#111827;background:#fafafa;transition:border-color 0.2s;width:100%;box-sizing:border-box}
+.sh-input:focus,.sh-select:focus,.sh-textarea:focus{border-color:#4a8c5c;box-shadow:0 0 0 3px rgba(74,140,92,0.1);background:#fff;outline:none}
+.sh-input-lg{font-size:0.98rem;padding:10px 13px;font-weight:600}
+.sh-textarea{resize:vertical;line-height:1.6}
+.sh-input-prefix-wrap{display:flex;align-items:center;border:2px solid #e5e7eb;border-radius:7px;overflow:hidden;background:#fafafa;transition:border-color 0.2s}
+.sh-input-prefix-wrap:focus-within{border-color:#4a8c5c;box-shadow:0 0 0 3px rgba(74,140,92,0.1)}
+.sh-input-prefix{padding:0 10px;font-size:0.8rem;font-weight:800;color:#6b7280;background:#f3f4f6;border-right:1px solid #e5e7eb;align-self:stretch;display:flex;align-items:center;white-space:nowrap}
+.sh-input-with-prefix{border:none;border-radius:0;background:transparent;box-shadow:none}
+.sh-input-with-prefix:focus{box-shadow:none}
+/* Amenities */
+.sh-amenities-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:14px}
+.sh-amenity-item{border:2px solid #e5e7eb;border-radius:8px;padding:10px;cursor:pointer;transition:all 0.2s;display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center;background:#fafafa;position:relative}
+.sh-amenity-item:hover{border-color:#4a8c5c;background:#f0fdf4}
+.sh-amenity-item.checked{border-color:#1a3c2e;background:#f0fdf4}
+.sh-amenity-item input{position:absolute;top:6px;right:6px;width:14px;height:14px}
+.sh-am-icon{font-size:1.3rem}
+.sh-am-label{font-size:0.72rem;font-weight:700;color:#374151}
+.sh-addon-item{display:flex;align-items:center;gap:7px;font-size:0.82rem;color:#374151;cursor:pointer;padding:8px 12px;border:2px solid #e5e7eb;border-radius:7px;background:#fafafa;transition:0.2s}
+.sh-addon-item:hover{border-color:#4a8c5c;background:#f0fdf4}
+.sh-addon-item input{width:auto}
+/* Room blocks */
+.sh-room-block{border:2px solid #e5e7eb;border-radius:10px;margin-bottom:12px;overflow:hidden}
+.sh-room-header{background:#2d6449;padding:10px 14px;display:flex;align-items:center;gap:10px}
+.sh-room-num{color:#f0c84a;font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:1px;white-space:nowrap;flex-shrink:0}
+.sh-room-name-input{flex:1;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.25);border-radius:6px;padding:6px 10px;color:#fff;font-size:0.88rem;font-weight:600}
+.sh-room-name-input::placeholder{color:rgba(255,255,255,0.5)}
+.sh-room-name-input:focus{background:rgba(255,255,255,0.2);outline:none}
+.sh-btn-remove-room{background:rgba(239,68,68,0.2);color:#fca5a5;border:none;border-radius:6px;padding:5px 10px;font-size:0.72rem;font-weight:700;cursor:pointer;white-space:nowrap;flex-shrink:0}
+.sh-btn-remove-room:hover{background:rgba(239,68,68,0.4)}
+.sh-room-body{padding:14px}
+.sh-pricing-section{background:#f8fdf9;border-radius:8px;padding:12px;margin-bottom:12px;border:1px solid #e8f5e9}
+/* Reviews */
+.sh-review-row{border:1px solid #e5e7eb;border-radius:8px;padding:14px;margin-bottom:10px}
+/* Buttons */
+.sh-btn-add-step{display:inline-flex;align-items:center;gap:6px;background:#f0fdf4;color:#4a8c5c;border:2px dashed #4a8c5c;border-radius:8px;padding:7px 14px;font-size:0.82rem;font-weight:700;cursor:pointer;transition:0.2s;margin-top:4px}
+.sh-btn-add-step:hover{background:#dcfce7}
+.sh-btn-remove-step{background:#fee2e2;color:#dc2626;border:none;border-radius:6px;width:28px;height:28px;font-size:0.9rem;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.sh-btn-add-room{display:flex;align-items:center;gap:8px;background:#1a3c2e;color:#f0c84a;border:none;border-radius:10px;padding:11px 20px;font-size:0.88rem;font-weight:800;cursor:pointer;transition:0.2s;margin-top:4px}
+.sh-btn-add-room:hover{background:#2d6449}
+.sh-gallery-grid{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px;min-height:60px}
+.sh-gallery-item{position:relative;width:88px;height:88px;border-radius:8px;overflow:hidden;border:2px solid #e5e7eb}
+.sh-gallery-item img{width:100%;height:100%;object-fit:cover}
+.sh-gallery-badge-first{position:absolute;top:3px;left:3px;background:#f0c84a;color:#1a3c2e;border-radius:50%;width:18px;height:18px;font-size:0.65rem;display:flex;align-items:center;justify-content:center;font-weight:900}
+.sh-gallery-remove{position:absolute;top:3px;right:3px;background:rgba(239,68,68,0.9);color:#fff;border:none;border-radius:50%;width:20px;height:20px;font-size:0.7rem;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.sh-btn-upload{background:#4a8c5c;color:#fff;border:none;border-radius:8px;padding:10px 18px;font-size:0.85rem;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:0.2s}
+.sh-btn-upload:hover{background:#1a3c2e}
+.sh-btn-publish{width:100%;background:#1a3c2e;color:#f0c84a;border:none;border-radius:8px;padding:11px;font-size:0.92rem;font-weight:800;cursor:pointer;transition:0.2s;display:flex;align-items:center;justify-content:center;gap:8px}
+.sh-btn-publish:hover{background:#2d6449}
+.sh-btn-view{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;margin-top:8px;background:#f0fdf4;color:#4a8c5c;border:2px solid #4a8c5c;border-radius:8px;padding:9px;font-size:0.82rem;font-weight:700;text-decoration:none;transition:0.2s}
+.sh-btn-view:hover{background:#dcfce7}
+/* Meta box header colors */
+#sh_step1 .hndle,#sh_step2 .hndle,#sh_step3 .hndle,#sh_step4 .hndle,#sh_step5 .hndle,#sh_step6 .hndle,#sh_step7 .hndle{background:linear-gradient(90deg,#2d6449,#4a8c5c);color:#f0c84a !important;font-size:0.85rem !important;border-radius:4px 4px 0 0}
+#sh_step1 .hndle span,#sh_step2 .hndle span,#sh_step3 .hndle span,#sh_step4 .hndle span,#sh_step5 .hndle span,#sh_step6 .hndle span,#sh_step7 .hndle span{color:#f0c84a !important}
+#sh_publish .hndle{background:#d4a843;color:#1a3c2e !important;font-size:0.85rem !important}
+#sh_publish .hndle span{color:#1a3c2e !important}

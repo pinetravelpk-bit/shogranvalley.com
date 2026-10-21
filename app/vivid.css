@@ -1,0 +1,123 @@
+/* ==========================================================================
+   Shogran Valley — Vivid layer
+   Loaded after theme.css. Fraunces headings + Plus Jakarta Sans body, and a
+   brighter palette: the logo's forest green, sunset orange, coral, sky blue
+   and sunshine yellow. Delete the import in app/layout.jsx to go back.
+   ========================================================================== */
+:root{
+  --forest:#053d2b;--forest-2:#0a5a3c;--brand:#0a7a3e;
+  --emerald:#10b981;--teal:#0ea5a4;--sky:#38bdf8;--ocean:#2563eb;
+  --sunset:#ff7a1a;--coral:#ff4d6d;--sun:#ffc23d;--violet:#8b5cf6;
+  --wine:#e5395f;--gold:#ff9f1c;--gold-soft:#ffd88a;
+  --ivory:#fffaf2;--ivory-2:#fff1df;--ink:#14231c;--muted:#5d6b63;--line:#f1e3cc;
+  --grad-sunset:linear-gradient(120deg,#ffb238 0%,#ff7a1a 45%,#ff4d6d 100%);
+  --grad-valley:linear-gradient(120deg,#10b981 0%,#0ea5a4 50%,#2563eb 100%);
+  --grad-sky:linear-gradient(120deg,#38bdf8 0%,#8b5cf6 100%);
+  --serif:'Fraunces',Georgia,'Times New Roman',serif;
+  --sans:'Plus Jakarta Sans','Helvetica Neue',Arial,sans-serif;
+  --shadow-pop:0 18px 40px -14px rgba(255,90,60,.45);
+}
+
+/* ---------- Type ---------- */
+body{font-family:var(--sans);background:
+  radial-gradient(900px 500px at 100% 0%,rgba(56,189,248,.10),transparent 60%),
+  radial-gradient(800px 500px at 0% 30%,rgba(255,159,28,.09),transparent 60%),
+  var(--ivory)}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:700;letter-spacing:-.02em;font-variation-settings:"SOFT" 50,"WONK" 1}
+.eyebrow{color:var(--coral);font-weight:700;letter-spacing:.22em}
+.section-header .eyebrow:before,.section-header .eyebrow:after{height:3px;width:28px;border-radius:3px;background:var(--grad-sunset)}
+.section-header h2{font-weight:800;color:var(--forest)}
+.section-header h2 em,.section-header h2 i{font-style:italic;background:var(--grad-sunset);-webkit-background-clip:text;background-clip:text;color:transparent}
+::selection{background:var(--sun);color:var(--forest)}
+
+/* ---------- Header ---------- */
+.top-nav{background:rgba(255,250,242,.92);border-bottom:0;box-shadow:0 1px 0 rgba(255,159,28,.25)}
+.top-nav:after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;background:linear-gradient(90deg,#10b981,#38bdf8,#8b5cf6,#ff4d6d,#ff9f1c)}
+.navigation{font-weight:700;letter-spacing:.12em}
+.navigation>a:not(.button):after{height:3px;border-radius:3px;background:var(--grad-sunset)}
+.navigation>a:not(.button):hover{color:var(--sunset)}
+.navigation .button{background:var(--grad-sunset);border:0;box-shadow:var(--shadow-pop)}
+.navigation .button:hover{background:var(--grad-valley)}
+.travel-reading-progress{height:3px;background:var(--grad-sunset)}
+
+/* ---------- Buttons ---------- */
+.button{background:var(--grad-valley);border:0;color:#fff;font-weight:700;letter-spacing:.04em;box-shadow:0 12px 26px -12px rgba(14,165,164,.6)}
+.button:hover{background:var(--grad-sunset);color:#fff;box-shadow:var(--shadow-pop)}
+
+/* ---------- Hero ---------- */
+.travel-shade{background:
+  linear-gradient(90deg,rgba(4,40,28,.80) 0%,rgba(4,40,28,.40) 45%,rgba(4,40,28,0) 78%),
+  linear-gradient(0deg,rgba(4,30,22,.70) 0%,rgba(4,30,22,0) 45%),
+  linear-gradient(200deg,rgba(255,122,26,.28) 0%,rgba(255,77,109,0) 40%)}
+.travel-frame{border-color:rgba(255,216,138,.35)}
+.travel-frame:before,.travel-frame:after{border-color:var(--sun);border-width:2px}
+.travel-eyebrow{color:var(--sun);font-weight:700}
+.travel-eyebrow>span{height:3px;border-radius:3px;background:var(--grad-sunset)}
+.travel-hero h1{font-weight:800;letter-spacing:-.035em}
+.travel-hero h1 .hero-italic{font-weight:600;background:linear-gradient(100deg,#ffd88a,#ff9f1c 45%,#ff6b8a);-webkit-background-clip:text;background-clip:text;color:transparent}
+.travel-primary{background:var(--grad-sunset);color:#fff;font-weight:800;box-shadow:0 16px 36px -10px rgba(255,77,109,.65)}
+.travel-primary:hover{background:linear-gradient(120deg,#ffc23d,#ff7a1a 50%,#ff3d61);color:#fff}
+.travel-secondary{border-bottom:2px solid var(--sun)}
+.travel-hero-location>span{color:var(--sun)}
+
+/* ---------- Search box ---------- */
+.search-box,.travel-search{border-radius:22px;box-shadow:0 30px 60px -25px rgba(5,61,43,.45)}
+.search-tab.active,.search-tab[aria-selected=true]{background:var(--grad-sunset);color:#fff;border-color:transparent}
+
+/* ---------- Sections ---------- */
+.section-alt{background:linear-gradient(180deg,#eafaf3 0%,#fff6ea 100%)}
+.why-section{background:var(--grad-valley);color:#fff}
+.why-section h2,.why-section h3,.why-section .eyebrow{color:#fff}
+.why-section p{color:rgba(255,255,255,.88)}
+.about-stats strong,.travel-facts strong{background:var(--grad-sunset);-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:800}
+.answer-box{border:0;border-left:6px solid var(--sunset);background:linear-gradient(120deg,#fff4e3,#ffe9ef);border-radius:18px}
+
+/* ---------- Cards ---------- */
+.card,.catalog-card,.destination{border-radius:20px;overflow:hidden;border:0;background:#fff;box-shadow:0 14px 34px -18px rgba(5,61,43,.35);transition:transform .45s var(--ease),box-shadow .45s var(--ease)}
+.card:hover,.catalog-card:hover,.destination:hover{transform:translateY(-6px);box-shadow:0 26px 50px -20px rgba(255,90,60,.45)}
+.cards-grid>.card:nth-child(4n+1),.catalog-cards>.catalog-card:nth-child(4n+1){border-top:5px solid var(--sunset)}
+.cards-grid>.card:nth-child(4n+2),.catalog-cards>.catalog-card:nth-child(4n+2){border-top:5px solid var(--emerald)}
+.cards-grid>.card:nth-child(4n+3),.catalog-cards>.catalog-card:nth-child(4n+3){border-top:5px solid var(--sky)}
+.cards-grid>.card:nth-child(4n+4),.catalog-cards>.catalog-card:nth-child(4n+4){border-top:5px solid var(--coral)}
+.card h3,.catalog-card h2{font-family:var(--serif);font-weight:700;color:var(--forest)}
+.card-bottom strong,.catalog-card strong{color:var(--sunset);font-weight:800}
+.badge{background:var(--grad-sunset);color:#fff;border:0;font-weight:700;border-radius:999px;box-shadow:0 8px 18px -8px rgba(255,77,109,.7)}
+.pills a,.pills span,.pills button{border-radius:999px;border:0;background:#fff;box-shadow:0 6px 16px -10px rgba(5,61,43,.4);font-weight:600}
+.pills a:nth-child(5n+1){background:#e7f9f1;color:#067a55}
+.pills a:nth-child(5n+2){background:#e6f5ff;color:#0b6aa8}
+.pills a:nth-child(5n+3){background:#fff0e3;color:#c2510a}
+.pills a:nth-child(5n+4){background:#ffe8ee;color:#c0294e}
+.pills a:nth-child(5n+5){background:#f1ebff;color:#6a3fd6}
+
+/* ---------- Listings ---------- */
+.catalog-hero,.page-hero{background:var(--grad-valley);color:#fff}
+.catalog-hero h1,.page-hero h1,.catalog-hero .eyebrow,.page-hero .eyebrow{color:#fff}
+.catalog-hero p,.page-hero p{color:rgba(255,255,255,.9)}
+.catalog-check{color:var(--emerald)}
+
+/* ---------- FAQ ---------- */
+.faq-list details{border-radius:16px;border:0;background:#fff;box-shadow:0 10px 26px -18px rgba(5,61,43,.4);margin-bottom:12px}
+.faq-list details[open]{box-shadow:0 0 0 2px var(--sun),0 14px 30px -18px rgba(255,122,26,.5)}
+.faq-list summary::marker{color:var(--sunset)}
+
+/* ---------- Hotel page ---------- */
+.hotel-page{background:transparent}
+.hotel-kicker{color:var(--coral)}
+.hotel-kicker-dot{background:var(--sunset)}
+.hotel-submit{background:var(--grad-sunset)}
+.hotel-selected-summary{background:linear-gradient(120deg,#e7f9f1,#e6f5ff)}
+.hotel-room-card.is-selected{border-color:var(--sunset);box-shadow:0 0 0 2px rgba(255,122,26,.25),0 14px 34px -16px rgba(255,90,60,.4)}
+.hotel-room-bottom strong{color:var(--sunset)}
+.hotel-booking-card{border:0;box-shadow:0 24px 50px -24px rgba(5,61,43,.45);border-top:5px solid var(--sunset)}
+.hotel-policy-grid h3,.hotel-lightbox header{font-family:var(--sans)}
+
+/* ---------- Footer ---------- */
+.footer{background:linear-gradient(160deg,#053d2b 0%,#06402f 55%,#0b3550 100%);position:relative}
+.footer:before{content:"";position:absolute;left:0;right:0;top:0;height:4px;background:linear-gradient(90deg,#10b981,#38bdf8,#8b5cf6,#ff4d6d,#ff9f1c)}
+.footer-title{color:var(--sun)}
+.footer a:hover{color:var(--sun)}
+
+/* ---------- WhatsApp float ---------- */
+.whatsapp{background:#25d366;box-shadow:0 14px 30px -10px rgba(37,211,102,.7)}
+
+@media (prefers-reduced-motion:reduce){.card:hover,.catalog-card:hover,.destination:hover{transform:none}}

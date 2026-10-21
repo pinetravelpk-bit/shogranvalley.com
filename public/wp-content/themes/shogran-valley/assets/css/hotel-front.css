@@ -1,0 +1,260 @@
+/* ============================================================
+   SHOGRAN VALLEY — Hotel Frontend Styles
+   assets/css/hotel-front.css
+============================================================ */
+
+/* ===== HOTEL BAR ===== */
+.hf-hotel-bar{background:#fff;border-bottom:1px solid #eee;overflow-x:auto}
+.hf-hotel-bar-inner{max-width:1400px;margin:0 auto;padding:10px 5%;display:flex;gap:8px;align-items:center;min-height:52px}
+.hf-bar-label{font-size:0.72rem;font-weight:800;color:var(--text-light);text-transform:uppercase;letter-spacing:0.6px;white-space:nowrap;flex-shrink:0}
+.hf-bar-btn{padding:5px 13px;border-radius:20px;font-size:0.78rem;font-weight:700;border:2px solid transparent;background:var(--stone);color:var(--text-mid);transition:0.2s;white-space:nowrap;flex-shrink:0;text-decoration:none}
+.hf-bar-btn:hover{border-color:var(--forest);color:var(--forest)}
+.hf-bar-btn.active{background:var(--forest);color:#fff;border-color:var(--forest)}
+
+/* ===== BREADCRUMB ===== */
+.hf-breadcrumb{background:#fff;border-bottom:1px solid #eee;padding:9px 0;font-size:0.78rem;color:var(--text-light)}
+.hf-breadcrumb .container{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.hf-breadcrumb a{color:var(--meadow);font-weight:600;text-decoration:none}
+
+/* ===== STICKY TABS ===== */
+.hf-tabs{background:#fff;border-bottom:2px solid #eee;position:sticky;top:0;z-index:200}
+.hf-tabs .container{display:flex;overflow-x:auto;padding:0}
+.hf-tab{padding:12px 16px;font-size:0.78rem;font-weight:700;color:var(--text-light);border-bottom:2px solid transparent;margin-bottom:-2px;white-space:nowrap;text-decoration:none;transition:0.2s;text-transform:uppercase;letter-spacing:0.4px}
+.hf-tab:hover,.hf-tab.active{color:var(--forest);border-bottom-color:var(--forest)}
+.hf-tab-book{margin-left:auto;padding:9px 18px;background:var(--gold);color:var(--forest) !important;border-radius:6px;margin-top:6px;margin-bottom:6px;font-size:0.78rem;font-weight:800;text-decoration:none;display:flex;align-items:center;white-space:nowrap;flex-shrink:0;transition:0.2s}
+.hf-tab-book:hover{background:var(--gold-light)}
+
+/* ===== MAIN ===== */
+.hf-main{background:#f4f4f4;min-height:60vh;padding-top:72px}
+
+/* ===== DETAIL LAYOUT ===== */
+.hf-detail-wrap{padding:24px 0 80px}
+.hf-detail-layout{display:grid;grid-template-columns:1fr 340px;gap:24px;align-items:start}
+.hf-card{background:#fff;border-radius:14px;padding:24px 28px;margin-bottom:20px;box-shadow:0 2px 12px rgba(0,0,0,0.06)}
+
+/* GALLERY */
+.hf-gallery{border-radius:14px;overflow:hidden;position:relative;background:var(--forest);margin-bottom:20px;box-shadow:0 2px 12px rgba(0,0,0,0.1)}
+.hf-main-photo{width:100%;height:420px;object-fit:cover;display:block;transition:transform 0.3s}
+.hf-main-photo:hover{transform:scale(1.01)}
+.hf-gallery-badge{position:absolute;top:14px;left:14px;background:var(--red,#e53e3e);color:#fff;font-size:0.72rem;font-weight:800;padding:5px 14px;border-radius:20px;text-transform:uppercase;z-index:2}
+.hf-thumbs{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;padding:4px}
+.hf-thumb{width:100%;height:70px;object-fit:cover;border-radius:4px;cursor:pointer;opacity:0.7;transition:0.2s;border:2px solid transparent}
+.hf-thumb:hover{opacity:1}
+.hf-thumb.active{opacity:1;border-color:var(--gold)}
+
+/* TITLE */
+.hf-hotel-header{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:12px;flex-wrap:wrap}
+.hf-hotel-name{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3vw,2rem);font-weight:900;color:var(--text-dark);line-height:1.25;margin-bottom:6px}
+.hf-hotel-loc{font-size:0.85rem;color:var(--text-light)}
+.hf-stars-wrap{text-align:center;flex-shrink:0}
+.hf-stars{color:var(--gold);font-size:1.2rem}
+.hf-star-label{font-size:0.72rem;color:var(--text-light);margin-top:2px}
+.hf-rating-row{display:flex;align-items:center;gap:8px;margin-bottom:14px}
+.hf-rating-num{font-size:1.2rem;font-weight:800;color:var(--text-dark)}
+.hf-rating-stars{color:var(--gold);font-size:0.95rem}
+.hf-rating-count{font-size:0.82rem;color:var(--text-light)}
+.hf-am-pills{display:flex;flex-wrap:wrap;gap:6px}
+.hf-am-pill{background:var(--stone);border-radius:20px;padding:4px 12px;font-size:0.75rem;font-weight:700;color:var(--text-mid)}
+
+/* SECTION TITLE */
+.hf-section-title{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--forest);margin-bottom:18px;padding-bottom:12px;border-bottom:2px solid var(--stone);display:flex;align-items:center;gap:8px}
+
+/* DESCRIPTION */
+.hf-desc{font-size:0.92rem;color:var(--text-mid);line-height:1.8;margin-bottom:16px}
+.hf-offers-box{background:linear-gradient(135deg,#f0fdf4,#dcfce7);border-radius:10px;padding:16px;border-left:4px solid #22c55e}
+.hf-offers-title{font-weight:800;font-size:0.85rem;color:#166534;margin-bottom:10px}
+.hf-offer-item{font-size:0.85rem;color:#166534;margin-bottom:5px}
+
+/* ROOMS */
+.hf-room-card{border:2px solid #eee;border-radius:12px;padding:18px 20px;margin-bottom:14px;transition:border-color 0.2s}
+.hf-room-card:hover{border-color:var(--meadow)}
+.hf-room-header{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:10px;flex-wrap:wrap}
+.hf-room-name{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--forest)}
+.hf-room-meta{font-size:0.78rem;color:var(--text-light);margin-top:3px}
+.hf-room-price{text-align:right}
+.hf-room-promo{font-size:0.78rem;color:#22c55e;font-weight:700}
+.hf-room-base{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:900;color:var(--forest)}
+.hf-room-base span{font-family:'Nunito',sans-serif;font-size:0.75rem;color:var(--text-light);font-weight:400}
+.hf-room-desc{font-size:0.85rem;color:var(--text-mid);margin-bottom:10px}
+.hf-room-rates{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.hf-rate-tag{background:#f0fdf4;color:#16a34a;border:1px solid #bbf7d0;border-radius:6px;padding:3px 10px;font-size:0.75rem;font-weight:700}
+.hf-rate-peak{background:#fff7ed;color:#c2410c;border-color:#fed7aa}
+.hf-room-facilities{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.hf-facility{background:var(--stone);border-radius:4px;padding:3px 10px;font-size:0.75rem;color:var(--text-mid)}
+.hf-room-book-btn{display:inline-flex;align-items:center;gap:6px;background:var(--forest);color:#fff;padding:9px 18px;border-radius:8px;font-size:0.82rem;font-weight:700;text-decoration:none;transition:0.2s}
+.hf-room-book-btn:hover{background:var(--meadow);color:#fff}
+
+/* AMENITIES */
+.hf-amenities-full{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;margin-bottom:16px}
+.hf-am-item{display:flex;align-items:center;gap:8px;font-size:0.85rem;color:var(--text-mid);background:var(--stone);border-radius:8px;padding:10px 12px}
+.hf-am-icon-lg{font-size:1.1rem}
+.hf-am-subtitle{font-size:0.8rem;font-weight:800;color:var(--text-mid);text-transform:uppercase;letter-spacing:0.5px;margin:14px 0 8px}
+.hf-addons-grid{display:flex;flex-wrap:wrap;gap:6px}
+.hf-addon-tag{background:#eff6ff;color:#1d4ed8;border:1px solid #bfdbfe;border-radius:6px;padding:4px 12px;font-size:0.78rem;font-weight:700}
+
+/* POLICIES */
+.hf-policy-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
+.hf-policy-item{display:flex;align-items:flex-start;gap:10px;background:var(--stone);border-radius:8px;padding:14px}
+.hf-pi-icon{font-size:1.1rem;flex-shrink:0}
+.hf-policy-item strong{display:block;font-size:0.82rem;font-weight:800;color:var(--text-dark);margin-bottom:3px}
+.hf-policy-item p{font-size:0.78rem;color:var(--text-light);margin:0}
+.hf-extra-policies{margin-top:10px}
+.hf-ep-item{font-size:0.82rem;color:var(--text-mid);padding:6px 0;border-bottom:1px solid var(--stone)}
+
+/* LOCATION */
+.hf-location-info{margin-bottom:14px}
+.hf-location-info strong{font-size:0.92rem;color:var(--text-dark)}
+.hf-distance{font-size:0.82rem;color:var(--text-light);margin-top:4px}
+.hf-map-wrap{border-radius:10px;overflow:hidden;margin-bottom:14px}
+.hf-nearby{margin-top:14px}
+.hf-nearby-item{font-size:0.85rem;color:var(--text-mid);padding:5px 0;border-bottom:1px solid var(--stone)}
+
+/* REVIEWS */
+.hf-rating-summary{display:flex;align-items:center;gap:24px;background:var(--stone);border-radius:10px;padding:20px 24px;margin-bottom:20px}
+.hf-rating-big{text-align:center;flex-shrink:0}
+.hf-big-num{font-family:'Playfair Display',serif;font-size:3rem;font-weight:900;color:var(--forest);line-height:1}
+.hf-big-stars{color:var(--gold);font-size:1.1rem;margin:4px 0}
+.hf-big-count{font-size:0.75rem;color:var(--text-light)}
+.hf-rating-bars{flex:1}
+.hf-bar-row{display:flex;align-items:center;gap:8px;margin-bottom:5px}
+.hf-bar-lbl{font-size:0.76rem;color:var(--text-light);width:22px;text-align:right;flex-shrink:0}
+.hf-bar-track{flex:1;height:6px;background:#e2e8f0;border-radius:3px;overflow:hidden}
+.hf-bar-fill{height:100%;border-radius:3px;background:var(--gold)}
+.hf-bar-pct{font-size:0.72rem;color:var(--text-light);width:28px}
+.hf-review-card{border:1px solid #eee;border-radius:10px;padding:16px;margin-bottom:12px}
+.hf-reviewer-row{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.hf-avatar{width:36px;height:36px;border-radius:50%;background:var(--forest);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.85rem;flex-shrink:0}
+.hf-reviewer-name{font-weight:700;font-size:0.88rem;color:var(--text-dark)}
+.hf-reviewer-date{font-size:0.74rem;color:var(--text-light)}
+.hf-review-stars{color:var(--gold);font-size:0.82rem;margin-bottom:6px}
+.hf-review-text{font-size:0.85rem;color:var(--text-mid);line-height:1.65;margin:0}
+.hf-no-data{color:var(--text-light);font-size:0.88rem;font-style:italic;padding:16px 0}
+
+/* PHOTO GRID */
+.hf-photo-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.hf-photo-thumb{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:6px;cursor:pointer;transition:0.2s;opacity:0.85}
+.hf-photo-thumb:hover{opacity:1;transform:scale(1.03)}
+
+/* SIDEBAR */
+.hf-detail-sidebar{position:sticky;top:90px}
+.hf-booking-card{background:#fff;border-radius:14px;box-shadow:0 6px 32px rgba(26,60,46,0.15);overflow:hidden;border:1px solid #eee}
+.hf-booking-header{background:linear-gradient(135deg,var(--forest),var(--forest-light));padding:22px 24px}
+.hf-bk-price-row{display:flex;align-items:baseline;gap:10px;margin-bottom:4px;flex-wrap:wrap}
+.hf-bk-old{font-size:0.9rem;color:rgba(255,255,255,0.45);text-decoration:line-through}
+.hf-bk-price{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:900;color:var(--gold-light);line-height:1}
+.hf-bk-unit{font-size:0.76rem;color:rgba(255,255,255,0.55);margin-bottom:6px}
+.hf-bk-discount{display:inline-block;background:#e53e3e;color:#fff;font-size:0.72rem;font-weight:800;padding:3px 12px;border-radius:20px;margin-top:2px}
+.hf-booking-body{padding:20px 22px}
+.hf-success{background:#ecfdf5;border:1px solid #6ee7b7;border-radius:8px;padding:12px 14px;margin-bottom:14px;display:flex;align-items:flex-start;gap:10px}
+.hf-success span{font-size:1.2rem;flex-shrink:0}
+.hf-success strong{display:block;font-size:0.88rem;color:#065f46;margin-bottom:2px}
+.hf-success p{font-size:0.78rem;color:#047857;margin:0}
+
+/* Booking Form Fields */
+.hf-field{margin-bottom:12px}
+.hf-field label{display:block;font-size:0.72rem;font-weight:800;color:var(--text-light);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px}
+.hf-field input,.hf-field select,.hf-field textarea{width:100%;padding:9px 13px;border:2px solid #e8e8e8;border-radius:8px;font-family:'Nunito',sans-serif;font-size:0.86rem;color:var(--text-dark);transition:border-color 0.2s;background:#fafafa;outline:none;box-sizing:border-box}
+.hf-field input:focus,.hf-field select:focus,.hf-field textarea:focus{border-color:var(--meadow);box-shadow:0 0 0 3px rgba(74,140,92,0.1);background:#fff}
+.hf-field-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.hf-check-label{display:flex;align-items:flex-start;gap:8px;font-size:0.82rem;color:var(--text-mid);text-transform:none;letter-spacing:0;cursor:pointer}
+.hf-check-label input{width:auto;margin-top:2px}
+
+/* Price Estimate */
+.hf-estimate{background:var(--stone);border-radius:8px;padding:12px 14px;margin-bottom:12px}
+.hf-est-row{display:flex;justify-content:space-between;font-size:0.8rem;color:var(--text-mid);padding:4px 0;border-bottom:1px dashed #ddd}
+.hf-est-total{display:flex;justify-content:space-between;font-size:1rem;font-weight:800;color:var(--forest);padding-top:8px;margin-top:4px;border-top:1px solid #ccc}
+.hf-est-note{font-size:0.7rem;color:var(--text-light);margin-top:6px}
+
+/* Add-ons */
+.hf-addons-check{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.hf-addon-check-item{display:flex;align-items:center;gap:6px;font-size:0.8rem;color:var(--text-mid);cursor:pointer}
+.hf-addon-check-item input{width:auto}
+
+/* Buttons */
+.hf-btn-book{width:100%;background:linear-gradient(135deg,var(--forest),var(--forest-light));color:#fff;border:none;padding:14px;border-radius:10px;font-family:'Nunito',sans-serif;font-size:0.98rem;font-weight:800;cursor:pointer;transition:all 0.25s;display:flex;align-items:center;justify-content:center;gap:8px}
+.hf-btn-book:hover{background:linear-gradient(135deg,var(--meadow),var(--forest));transform:translateY(-1px)}
+.hf-btn-wa{width:100%;display:flex;align-items:center;justify-content:center;gap:8px;background:#25d366;color:#fff;padding:11px;border-radius:10px;font-family:'Nunito',sans-serif;font-size:0.88rem;font-weight:700;text-decoration:none;margin-top:10px;transition:0.2s}
+.hf-btn-wa:hover{background:#1ebe57;color:#fff}
+.hf-trust{display:flex;flex-direction:column;gap:5px;margin-top:14px;padding-top:14px;border-top:1px solid #eee}
+.hf-trust-item{font-size:0.76rem;color:var(--text-light)}
+
+/* Contact widget */
+.hf-contact-widget{background:var(--stone);border-radius:14px;padding:16px 18px;margin-top:14px}
+.hf-contact-widget h4{font-size:0.88rem;font-weight:800;color:var(--forest);margin-bottom:10px}
+.hf-contact-row{display:flex;align-items:center;gap:8px;font-size:0.82rem;color:var(--text-mid);margin-bottom:7px}
+.hf-contact-row a{color:var(--meadow);font-weight:700;text-decoration:none}
+
+/* ============================================================
+   HOTEL LISTING PAGE
+============================================================ */
+.hf-listing-header{background:linear-gradient(135deg,var(--forest),var(--forest-light));padding:60px 5% 40px;color:#fff}
+.hf-listing-header .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px;max-width:1400px;margin:0 auto}
+.hf-lh-label{font-size:0.75rem;font-weight:800;color:var(--gold-light);text-transform:uppercase;letter-spacing:2px;margin-bottom:8px}
+.hf-lh-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);font-weight:900;color:#fff;margin-bottom:8px}
+.hf-lh-title em{color:var(--gold-light);font-style:normal}
+.hf-lh-sub{color:rgba(255,255,255,0.7);font-size:0.95rem}
+.hf-lh-stats{display:flex;gap:32px}
+.hf-stat{text-align:center}
+.hf-stat strong{display:block;font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:var(--gold-light)}
+.hf-stat span{font-size:0.78rem;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.8px}
+
+/* FILTER BAR */
+.hf-filter-bar{background:#fff;border-bottom:2px solid #eee;padding:16px 5%;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,0.08)}
+.hf-filter-bar .container{max-width:1400px;margin:0 auto}
+.hf-filter-row{display:flex;gap:10px;align-items:flex-end;flex-wrap:wrap}
+.hf-filter-field{display:flex;flex-direction:column;gap:4px;flex:1;min-width:120px}
+.hf-filter-field label{font-size:0.68rem;font-weight:800;color:var(--text-light);text-transform:uppercase;letter-spacing:0.5px}
+.hf-filter-field input,.hf-filter-field select{padding:8px 12px;border:2px solid #e5e7eb;border-radius:8px;font-family:'Nunito',sans-serif;font-size:0.84rem;color:var(--text-dark);background:#fafafa;outline:none;transition:border-color 0.2s}
+.hf-filter-field input:focus,.hf-filter-field select:focus{border-color:var(--meadow)}
+.hf-search-btn{background:var(--forest);color:#fff;border:none;padding:10px 22px;border-radius:8px;font-family:'Nunito',sans-serif;font-size:0.88rem;font-weight:800;cursor:pointer;transition:0.2s;white-space:nowrap;flex-shrink:0}
+.hf-search-btn:hover{background:var(--meadow)}
+.hf-amenity-filters{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px;align-items:center}
+.hf-af-label{font-size:0.72rem;font-weight:800;color:var(--text-light);text-transform:uppercase;letter-spacing:0.5px;white-space:nowrap}
+.hf-af-btn{background:var(--stone);color:var(--text-mid);border:2px solid transparent;border-radius:20px;padding:5px 12px;font-size:0.75rem;font-weight:700;cursor:pointer;transition:0.2s;font-family:'Nunito',sans-serif}
+.hf-af-btn:hover{border-color:var(--forest);color:var(--forest)}
+.hf-af-btn.active{background:var(--forest);color:#fff;border-color:var(--forest)}
+
+/* LISTING GRID */
+.hf-listing-wrap{padding:28px 5% 80px;max-width:1400px;margin:0 auto}
+.hf-listing-wrap .container{max-width:1400px;margin:0 auto}
+.hf-results-bar{margin-bottom:16px;font-size:0.85rem;color:var(--text-light);font-weight:600}
+.hf-hotels-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px}
+
+/* HOTEL CARD */
+.hf-hotel-card{background:#fff;border-radius:16px;overflow:hidden;border:2px solid transparent;box-shadow:0 2px 14px rgba(0,0,0,0.07);transition:all 0.3s}
+.hf-hotel-card:hover{transform:translateY(-6px);box-shadow:0 12px 32px rgba(26,60,46,0.15);border-color:var(--meadow)}
+.hf-card-img-wrap{position:relative;aspect-ratio:16/10;overflow:hidden;background:var(--forest)}
+.hf-card-img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.4s}
+.hf-hotel-card:hover .hf-card-img{transform:scale(1.05)}
+.hf-card-badge{position:absolute;top:12px;left:12px;background:#e53e3e;color:#fff;font-size:0.7rem;font-weight:800;padding:4px 10px;border-radius:20px;text-transform:uppercase;z-index:2}
+.hf-card-stars{position:absolute;bottom:10px;right:10px;color:var(--gold);font-size:1rem;background:rgba(0,0,0,0.5);padding:3px 8px;border-radius:6px;backdrop-filter:blur(4px)}
+.hf-card-body{padding:18px 20px}
+.hf-card-city{font-size:0.75rem;font-weight:700;color:var(--meadow);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:5px}
+.hf-card-name{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;margin-bottom:8px}
+.hf-card-name a{color:var(--text-dark);text-decoration:none;transition:color 0.2s}
+.hf-card-name a:hover{color:var(--meadow)}
+.hf-card-rating{display:flex;align-items:center;gap:6px;margin-bottom:8px}
+.hf-card-score{font-size:1rem;font-weight:800;color:var(--text-dark)}
+.hf-card-rating-stars{color:var(--gold);font-size:0.82rem}
+.hf-card-reviews{font-size:0.75rem;color:var(--text-light)}
+.hf-card-ams{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px}
+.hf-card-am{background:var(--stone);border-radius:4px;padding:2px 8px;font-size:0.72rem;color:var(--text-mid);white-space:nowrap}
+.hf-card-desc{font-size:0.82rem;color:var(--text-light);line-height:1.5;margin-bottom:14px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.hf-card-footer{display:flex;justify-content:space-between;align-items:center}
+.hf-card-old{font-size:0.78rem;color:var(--text-light);text-decoration:line-through;display:block}
+.hf-card-now{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:900;color:var(--forest)}
+.hf-card-per{font-family:'Nunito',sans-serif;font-size:0.72rem;color:var(--text-light);font-weight:400}
+.hf-card-btn{background:var(--forest);color:#fff;padding:9px 16px;border-radius:10px;font-size:0.8rem;font-weight:700;text-decoration:none;transition:0.2s;white-space:nowrap;flex-shrink:0}
+.hf-card-btn:hover{background:var(--meadow);color:#fff}
+
+/* EMPTY STATE */
+.hf-empty{text-align:center;padding:80px 20px;background:#fff;border-radius:16px;margin:0 auto;max-width:500px}
+.hf-empty h3{font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--forest);margin-bottom:10px}
+.hf-empty p{color:var(--text-mid);font-size:0.92rem;margin-bottom:20px}
+.hf-empty-btn{display:inline-block;background:var(--forest);color:#fff;padding:12px 24px;border-radius:10px;font-weight:700;text-decoration:none;transition:0.2s}
+.hf-empty-btn:hover{background:var(--meadow)}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:1024px){.hf-detail-layout{grid-template-columns:1fr}.hf-detail-sidebar{position:static}}
+@media(max-width:768px){.hf-main-photo{height:260px}.hf-thumbs{grid-template-columns:repeat(4,1fr)}.hf-amenities-full{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}.hf-policy-grid{grid-template-columns:1fr}.hf-photo-grid{grid-template-columns:repeat(3,1fr)}.hf-field-row{grid-template-columns:1fr}.hf-rating-summary{flex-direction:column}.hf-lh-stats{gap:16px}.hf-filter-row{gap:8px}.hf-addons-check{grid-template-columns:1fr}}
+@media(max-width:500px){.hf-photo-grid{grid-template-columns:repeat(2,1fr)}.hf-card{padding:16px 14px}.hf-thumbs{display:none}.hf-lh-stats{display:none}}

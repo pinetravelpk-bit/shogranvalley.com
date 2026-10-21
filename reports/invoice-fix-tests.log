@@ -1,0 +1,36 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> shogran-valley-nextjs@1.0.0 test
+> node --test tests/*.test.mjs
+
+✔ Stay estimates cross month boundaries and multiply rooms once (2.509102ms)
+✔ Impossible dates, reversed stays, past dates and long stays are rejected (0.576621ms)
+✔ Capacity and room limits are enforced (0.297529ms)
+✔ Unknown rates stay unquoted and seasonal rules are not invented (0.170762ms)
+✔ Separate client invoices use exact enquiry hotel, room, contacts, dates and quantity (2.574869ms)
+✔ Legacy fields and old drafts are refreshed without another client leaking through (0.489162ms)
+✔ Preview enquiry carries selected hotel and exact form values through to its invoice (0.572805ms)
+✔ Filters combine location, budget, capacity and all selected amenities (1.877ms)
+✔ Unknown prices sort last and source rows stay unchanged (0.291721ms)
+▶ Production migration and administration
+  ✔ Every published imported URL serves a page (4559.732704ms)
+  ✔ Taxonomy archive routes work (4259.282981ms)
+  ✔ Legacy redirects retain paths and query strings (1238.331661ms)
+  ✔ Sitemap, robots and unresolved URLs are truthful (177.317077ms)
+  ✔ Private data requires authentication and origin checking (220.893312ms)
+  ✔ Booking enquiry validates and persists (166.453921ms)
+  ✔ Hotel enquiries validate room, dates and capacity; server computes the estimate (124.650531ms)
+  ✔ Invoices are created once, remain private, validate totals and download as PDF (343.516878ms)
+  ✔ Bundled originals and on-demand thumbnail routes work (30.597467ms)
+  ✔ Image replacement preserves original and thumbnail URLs (40.803112ms)
+  ✔ Content edits and URL changes produce working redirects (158.469742ms)
+  ✔ Data survives server restart and logout revokes session (701.525037ms)
+✔ Production migration and administration (12653.927879ms)
+ℹ tests 22
+ℹ suites 0
+ℹ pass 22
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 12912.828417

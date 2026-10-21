@@ -1,0 +1,1 @@
+import {NextResponse} from 'next/server';import {logout,cookieToken,sameOrigin} from '../../../lib/auth.mjs';export function POST(req){if(!sameOrigin(req))return NextResponse.json({error:'Invalid origin'},{status:403});logout(cookieToken(req));const r=NextResponse.json({ok:true});r.cookies.delete('sv_session');return r}

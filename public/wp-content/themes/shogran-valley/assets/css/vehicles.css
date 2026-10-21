@@ -1,0 +1,247 @@
+/* ============================================================
+   SHOGRAN VALLEY — Vehicles (Rent a Car & Jeep) Styles
+   assets/css/vehicles.css
+============================================================ */
+
+/* ===== TOP BAR ===== */
+.vc-bar{background:#fff;border-bottom:1px solid #eee;overflow-x:auto}
+.vc-bar-inner{max-width:1400px;margin:0 auto;padding:10px 5%;display:flex;gap:8px;align-items:center;min-height:52px}
+.vc-bar-lbl{font-size:0.72rem;font-weight:800;color:var(--text-light);text-transform:uppercase;letter-spacing:0.6px;white-space:nowrap;flex-shrink:0}
+.vc-bar-btn{padding:5px 13px;border-radius:20px;font-size:0.78rem;font-weight:700;border:2px solid transparent;background:var(--stone);color:var(--text-mid);transition:0.2s;white-space:nowrap;flex-shrink:0;text-decoration:none}
+.vc-bar-btn:hover{border-color:var(--forest);color:var(--forest)}
+.vc-bar-btn.active{background:var(--forest);color:#fff;border-color:var(--forest)}
+
+/* ===== BREADCRUMB ===== */
+.vc-breadcrumb{background:#fff;border-bottom:1px solid #eee;padding:9px 0;font-size:0.78rem;color:var(--text-light)}
+.vc-breadcrumb .container{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.vc-breadcrumb a{color:var(--meadow);font-weight:600;text-decoration:none}
+
+/* ===== STICKY TABS ===== */
+.vc-tabs{background:#fff;border-bottom:2px solid #eee;position:sticky;top:0;z-index:200}
+.vc-tabs .container{display:flex;overflow-x:auto;padding:0}
+.vc-tab{padding:12px 16px;font-size:0.78rem;font-weight:700;color:var(--text-light);border-bottom:2px solid transparent;margin-bottom:-2px;white-space:nowrap;text-decoration:none;transition:0.2s;text-transform:uppercase;letter-spacing:0.4px}
+.vc-tab:hover,.vc-tab.active{color:var(--forest);border-bottom-color:var(--forest)}
+.vc-tab-book{margin-left:auto;padding:9px 18px;background:var(--gold);color:var(--forest) !important;border-radius:6px;margin-top:6px;margin-bottom:6px;font-size:0.78rem;font-weight:800;text-decoration:none;display:flex;align-items:center;white-space:nowrap;flex-shrink:0;transition:0.2s}
+.vc-tab-book:hover{background:var(--gold-light)}
+
+/* ===== MAIN ===== */
+.vc-main{background:#f4f4f4;min-height:60vh;padding-top:72px}
+.vc-detail-wrap{padding:24px 0 80px}
+.vc-detail-layout{display:grid;grid-template-columns:1fr 340px;gap:24px;align-items:start}
+.vc-card{background:#fff;border-radius:14px;padding:24px 28px;margin-bottom:20px;box-shadow:0 2px 12px rgba(0,0,0,0.06)}
+.vc-section-title{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--forest);margin-bottom:14px;padding-bottom:12px;border-bottom:2px solid var(--stone)}
+.vc-section-sub{font-size:0.85rem;color:var(--text-light);margin-bottom:16px;margin-top:-8px}
+
+/* ===== PHOTO ===== */
+.vc-photo-wrap{border-radius:14px;overflow:hidden;position:relative;background:var(--forest);margin-bottom:20px;box-shadow:0 2px 12px rgba(0,0,0,0.1)}
+.vc-main-photo{width:100%;height:380px;object-fit:cover;display:block;transition:transform 0.3s}
+.vc-main-photo:hover{transform:scale(1.02)}
+.vc-photo-placeholder{width:100%;height:380px;background:linear-gradient(135deg,var(--forest),var(--meadow));display:flex;align-items:center;justify-content:center;font-size:6rem}
+.vc-photo-badge{position:absolute;top:14px;left:14px;background:var(--gold);color:var(--forest);font-size:0.72rem;font-weight:800;padding:5px 14px;border-radius:20px;text-transform:uppercase;z-index:2}
+
+/* ===== TITLE ===== */
+.vc-type-tag{display:inline-block;background:var(--forest);color:var(--gold-light);font-size:0.72rem;font-weight:800;padding:3px 12px;border-radius:20px;text-transform:uppercase;letter-spacing:0.8px;margin-bottom:10px}
+.vc-name{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3vw,2rem);font-weight:900;color:var(--text-dark);line-height:1.25;margin-bottom:14px}
+.vc-meta-pills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.vc-pill{display:inline-flex;align-items:center;gap:5px;background:var(--stone);border-radius:20px;padding:5px 13px;font-size:0.78rem;font-weight:700;color:var(--text-mid)}
+.vc-desc{font-size:0.92rem;color:var(--text-mid);line-height:1.8;margin-top:8px}
+
+/* ===== ROUTES TABLE ===== */
+.vc-routes-table{border:1px solid #eee;border-radius:10px;overflow:hidden;margin-bottom:20px}
+.vc-routes-head{display:grid;grid-template-columns:1fr 1fr 110px 1fr 90px;gap:8px;padding:10px 16px;background:var(--forest);font-size:0.72rem;font-weight:800;color:var(--gold-light);text-transform:uppercase;letter-spacing:0.5px}
+.vc-route-row{display:grid;grid-template-columns:1fr 1fr 110px 1fr 90px;gap:8px;padding:12px 16px;border-bottom:1px solid #f0f0f0;align-items:center;transition:background 0.15s}
+.vc-route-row:last-child{border-bottom:none}
+.vc-route-row:hover{background:#f9f9f9}
+.vc-route-from,.vc-route-to{font-size:0.85rem;color:var(--text-dark);font-weight:600}
+.vc-route-price{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:900;color:var(--forest)}
+.vc-route-note{font-size:0.75rem;color:var(--text-light)}
+.vc-route-select-btn{background:var(--forest);color:#fff;border:none;border-radius:6px;padding:6px 12px;font-size:0.78rem;font-weight:700;cursor:pointer;transition:0.2s;font-family:'Nunito',sans-serif;white-space:nowrap}
+.vc-route-select-btn:hover{background:var(--meadow)}
+.vc-perday-box{background:linear-gradient(135deg,var(--stone),#f8f4ec);border-radius:12px;padding:18px 20px;border-left:4px solid var(--gold)}
+.vc-perday-title{font-size:0.8rem;font-weight:800;color:var(--text-mid);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px}
+.vc-perday-rate{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900;color:var(--forest)}
+.vc-perday-rate span{font-family:'Nunito',sans-serif;font-size:0.8rem;color:var(--text-light);font-weight:400}
+.vc-perday-note{font-size:0.78rem;color:var(--text-light);margin-top:4px}
+
+/* ===== FEATURES ===== */
+.vc-features-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px}
+.vc-feature-item{background:var(--stone);border-radius:8px;padding:10px 14px;font-size:0.85rem;color:var(--text-mid);display:flex;align-items:center;gap:8px}
+
+/* ===== POLICIES ===== */
+.vc-policy-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.vc-policy-item{display:flex;align-items:flex-start;gap:10px;background:var(--stone);border-radius:8px;padding:14px}
+.vc-policy-item span{font-size:1.1rem;flex-shrink:0;margin-top:1px}
+.vc-policy-item strong{display:block;font-size:0.82rem;font-weight:800;color:var(--text-dark);margin-bottom:3px}
+.vc-policy-item p{font-size:0.78rem;color:var(--text-light);margin:0}
+
+/* ===== RELATED ===== */
+.vc-related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px}
+.vc-related-card{background:#fff;border-radius:10px;overflow:hidden;border:1px solid #eee;transition:all 0.25s;text-decoration:none;display:block}
+.vc-related-card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,0.1)}
+.vc-related-img{height:90px;background:linear-gradient(135deg,var(--forest),var(--meadow));display:flex;align-items:center;justify-content:center;font-size:2rem}
+.vc-related-body{padding:10px 12px}
+.vc-related-name{font-family:'Playfair Display',serif;font-size:0.88rem;font-weight:700;color:var(--text-dark);margin-bottom:4px;line-height:1.3}
+.vc-related-meta{display:flex;justify-content:space-between;font-size:0.75rem;color:var(--text-light)}
+.vc-related-price{font-weight:800;color:var(--forest)}
+
+/* ===== SIDEBAR ===== */
+.vc-sidebar{position:sticky;top:90px}
+.vc-booking-card{background:#fff;border-radius:14px;box-shadow:0 6px 32px rgba(26,60,46,0.15);overflow:hidden;border:1px solid #eee}
+.vc-booking-header{background:linear-gradient(135deg,var(--forest),var(--forest-light));padding:20px 22px}
+.vc-bk-price-row{display:flex;align-items:baseline;gap:10px;margin-bottom:4px}
+.vc-bk-price{font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:var(--gold-light);line-height:1}
+.vc-bk-unit{font-size:0.76rem;color:rgba(255,255,255,0.55)}
+.vc-booking-body{padding:18px 20px}
+.vc-success{background:#ecfdf5;border:1px solid #6ee7b7;border-radius:8px;padding:12px 14px;margin-bottom:14px;display:flex;align-items:flex-start;gap:10px}
+.vc-success span{font-size:1.2rem;flex-shrink:0}
+.vc-success strong{display:block;font-size:0.88rem;color:#065f46;margin-bottom:2px}
+.vc-success p{font-size:0.78rem;color:#047857;margin:0}
+.vc-error{background:#fff5f5;border:1px solid #fca5a5;border-radius:8px;padding:12px 14px;margin-bottom:14px;display:flex;align-items:flex-start;gap:10px}
+.vc-error span{font-size:1.2rem;flex-shrink:0}
+.vc-error strong{display:block;font-size:0.88rem;color:#7f1d1d;margin-bottom:2px}
+.vc-error p{font-size:0.78rem;color:#991b1b;margin:0}
+
+/* Booking type tabs */
+.vc-bk-type-tabs{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:14px}
+.vc-bkt{background:var(--stone);color:var(--text-mid);border:2px solid transparent;border-radius:8px;padding:9px;font-size:0.8rem;font-weight:700;cursor:pointer;transition:0.2s;font-family:'Nunito',sans-serif;text-align:center}
+.vc-bkt:hover{border-color:var(--forest);color:var(--forest)}
+.vc-bkt.active{background:var(--forest);color:#fff;border-color:var(--forest)}
+
+/* Quick route buttons */
+.vc-quick-routes{margin-top:10px;margin-bottom:4px}
+.vc-qr-label{font-size:0.7rem;font-weight:800;color:var(--text-light);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px}
+.vc-qr-btn{display:flex;justify-content:space-between;align-items:center;width:100%;background:var(--stone);border:1px solid #e0e0e0;border-radius:6px;padding:7px 10px;font-size:0.78rem;font-weight:600;cursor:pointer;transition:0.15s;margin-bottom:4px;font-family:'Nunito',sans-serif;color:var(--text-dark);text-align:left}
+.vc-qr-btn:hover{background:#e8f5e9;border-color:var(--meadow);color:var(--forest)}
+.vc-qr-btn span{color:var(--forest);font-weight:800}
+
+/* Estimate boxes */
+.vc-day-estimate,.vc-route-price-display{background:var(--stone);border-radius:8px;padding:12px 14px;margin-top:10px}
+.vc-est-row{display:flex;justify-content:space-between;font-size:0.8rem;color:var(--text-mid);padding:4px 0;border-bottom:1px dashed #ddd}
+.vc-est-total{display:flex;justify-content:space-between;font-size:1rem;font-weight:800;color:var(--forest);padding-top:8px;margin-top:4px;border-top:1px solid #ccc}
+
+/* Form fields */
+.vc-field{margin-bottom:11px}
+.vc-field label{display:block;font-size:0.72rem;font-weight:800;color:var(--text-light);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px}
+.vc-field input,.vc-field select,.vc-field textarea{width:100%;padding:9px 12px;border:2px solid #e8e8e8;border-radius:8px;font-family:'Nunito',sans-serif;font-size:0.86rem;color:var(--text-dark);transition:border-color 0.2s;background:#fafafa;outline:none;box-sizing:border-box}
+.vc-field input:focus,.vc-field select:focus,.vc-field textarea:focus{border-color:var(--meadow);box-shadow:0 0 0 3px rgba(74,140,92,0.1);background:#fff}
+.vc-field-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.vc-check-label{display:flex;align-items:flex-start;gap:8px;font-size:0.82rem;color:var(--text-mid);text-transform:none;letter-spacing:0;cursor:pointer}
+.vc-check-label input{width:auto;margin-top:2px}
+
+/* Buttons */
+.vc-btn-book{width:100%;background:linear-gradient(135deg,var(--forest),var(--forest-light));color:#fff;border:none;padding:14px;border-radius:10px;font-family:'Nunito',sans-serif;font-size:0.98rem;font-weight:800;cursor:pointer;transition:all 0.25s;display:flex;align-items:center;justify-content:center;gap:8px}
+.vc-btn-book:hover{background:linear-gradient(135deg,var(--meadow),var(--forest));transform:translateY(-1px)}
+.vc-btn-wa{width:100%;display:flex;align-items:center;justify-content:center;gap:8px;background:#25d366;color:#fff;padding:11px;border-radius:10px;font-family:'Nunito',sans-serif;font-size:0.88rem;font-weight:700;text-decoration:none;margin-top:10px;transition:0.2s}
+.vc-btn-wa:hover{background:#1ebe57;color:#fff}
+.vc-trust{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px;padding-top:14px;border-top:1px solid #eee;font-size:0.75rem;color:var(--text-light)}
+.vc-contact-widget{background:var(--stone);border-radius:14px;padding:14px 16px;margin-top:14px}
+.vc-contact-widget h4{font-size:0.86rem;font-weight:800;color:var(--forest);margin-bottom:8px}
+.vc-contact-widget div{font-size:0.82rem;color:var(--text-mid);margin-bottom:5px}
+.vc-contact-widget a{color:var(--meadow);font-weight:700;text-decoration:none}
+
+/* ===== LISTING PAGE ===== */
+.vc-listing-header{background:linear-gradient(135deg,var(--forest),var(--forest-light));padding:60px 5% 40px}
+.vc-listing-header .container{max-width:1400px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px}
+.vc-lh-label{font-size:0.75rem;font-weight:800;color:var(--gold-light);text-transform:uppercase;letter-spacing:2px;margin-bottom:8px}
+.vc-lh-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);font-weight:900;color:#fff;margin-bottom:8px}
+.vc-lh-title em{color:var(--gold-light);font-style:normal}
+.vc-lh-sub{color:rgba(255,255,255,0.7);font-size:0.95rem}
+.vc-lh-stats{display:flex;gap:32px}
+.vc-lh-stats div{text-align:center}
+.vc-lh-stats strong{display:block;font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:var(--gold-light)}
+.vc-lh-stats span{font-size:0.78rem;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.8px}
+
+/* Filter bar */
+.vc-filter-bar{background:#fff;border-bottom:2px solid #eee;padding:12px 5%;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,0.06)}
+.vc-filter-bar .container{max-width:1400px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.vc-filter-tabs{display:flex;gap:6px}
+.vc-ft{background:var(--stone);color:var(--text-mid);border:2px solid transparent;border-radius:20px;padding:7px 16px;font-size:0.82rem;font-weight:700;cursor:pointer;transition:0.2s;font-family:'Nunito',sans-serif}
+.vc-ft:hover{border-color:var(--forest);color:var(--forest)}
+.vc-ft.active{background:var(--forest);color:#fff;border-color:var(--forest)}
+.vc-filter-right{display:flex;gap:8px;flex-wrap:wrap}
+.vc-filter-select{padding:7px 12px;border:2px solid #e5e7eb;border-radius:8px;font-family:'Nunito',sans-serif;font-size:0.82rem;color:var(--text-dark);background:#fafafa;outline:none;transition:border-color 0.2s}
+.vc-filter-select:focus{border-color:var(--meadow)}
+
+/* Listing grid */
+.vc-listing-wrap{padding:28px 5% 80px}
+.vc-listing-wrap .container{max-width:1400px;margin:0 auto}
+.vc-section-header{margin-bottom:32px}
+.vc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:22px}
+
+/* Vehicle card */
+.vc-vehicle-card{background:#fff;border-radius:16px;overflow:hidden;border:2px solid transparent;box-shadow:0 2px 14px rgba(0,0,0,0.07);transition:all 0.3s}
+.vc-vehicle-card:hover{transform:translateY(-6px);box-shadow:0 12px 32px rgba(26,60,46,0.15);border-color:var(--meadow)}
+.vc-card-img-wrap{position:relative;aspect-ratio:16/10;overflow:hidden;background:var(--forest)}
+.vc-card-img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.4s}
+.vc-vehicle-card:hover .vc-card-img{transform:scale(1.05)}
+.vc-card-img-placeholder{width:100%;height:100%;background:linear-gradient(135deg,var(--forest),var(--meadow));display:flex;align-items:center;justify-content:center;font-size:3rem}
+.vc-card-badge{position:absolute;top:12px;left:12px;background:var(--gold);color:var(--forest);font-size:0.7rem;font-weight:800;padding:4px 10px;border-radius:20px;text-transform:uppercase;z-index:2}
+.vc-card-badge.badge-jeep{background:var(--forest);color:var(--gold-light)}
+.vc-card-type-tag{position:absolute;bottom:10px;right:10px;background:rgba(26,60,46,0.85);color:var(--gold-light);font-size:0.7rem;font-weight:800;padding:3px 10px;border-radius:6px;backdrop-filter:blur(4px)}
+.vc-card-body{padding:16px 18px}
+.vc-card-category{font-size:0.72rem;font-weight:800;color:var(--meadow);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px}
+.vc-card-name{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;margin-bottom:8px;line-height:1.3}
+.vc-card-name a{color:var(--text-dark);text-decoration:none;transition:color 0.2s}
+.vc-card-name a:hover{color:var(--meadow)}
+.vc-card-specs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px}
+.vc-card-specs span{background:var(--stone);border-radius:4px;padding:2px 8px;font-size:0.72rem;font-weight:700;color:var(--text-mid)}
+.vc-card-features{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px}
+.vc-feat-tag{background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;border-radius:4px;padding:2px 7px;font-size:0.7rem;font-weight:700}
+.vc-card-routes{margin-bottom:12px;border-top:1px solid var(--stone);padding-top:10px}
+.vc-card-route{display:flex;justify-content:space-between;font-size:0.78rem;color:var(--text-mid);padding:3px 0;border-bottom:1px dashed #f0f0f0}
+.vc-card-route:last-child{border-bottom:none}
+.vc-card-route-price{font-weight:800;color:var(--forest);font-size:0.8rem}
+.vc-card-footer{display:flex;justify-content:space-between;align-items:center;padding-top:10px;border-top:1px solid var(--stone)}
+.vc-card-rate{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:900;color:var(--forest)}
+.vc-card-per{font-family:'Nunito',sans-serif;font-size:0.72rem;color:var(--text-light);font-weight:400}
+.vc-card-from{display:block;font-size:0.75rem;color:var(--meadow);font-weight:700}
+.vc-card-btn{background:var(--forest);color:#fff;padding:9px 16px;border-radius:10px;font-size:0.8rem;font-weight:700;text-decoration:none;transition:0.2s;white-space:nowrap;flex-shrink:0}
+.vc-card-btn:hover{background:var(--meadow);color:#fff}
+
+/* Why section */
+.vc-why-section{margin-top:60px;padding:40px 0}
+.vc-why-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px;margin-top:32px}
+.vc-why-card{background:#fff;border-radius:14px;padding:24px;box-shadow:0 2px 12px rgba(0,0,0,0.06);text-align:center}
+.vc-why-icon{font-size:2rem;margin-bottom:12px}
+.vc-why-card h3{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--forest);margin-bottom:8px}
+.vc-why-card p{font-size:0.85rem;color:var(--text-mid);line-height:1.6}
+.vc-no-data{color:var(--text-light);font-size:0.88rem;font-style:italic;padding:16px 0}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:1024px){.vc-detail-layout{grid-template-columns:1fr}.vc-sidebar{position:static}}
+@media(max-width:768px){
+    .vc-main-photo{height:240px}
+    .vc-routes-head,.vc-route-row{grid-template-columns:1fr 1fr 90px;gap:6px}
+    .vc-routes-head span:nth-child(4),.vc-route-row .vc-route-note{display:none}
+    .vc-policy-grid{grid-template-columns:1fr}
+    .vc-features-grid{grid-template-columns:1fr 1fr}
+    .vc-field-row{grid-template-columns:1fr}
+    .vc-filter-right{width:100%}
+    .vc-lh-stats{display:none}
+}
+@media(max-width:500px){
+    .vc-card{padding:16px 14px}
+    .vc-photo-placeholder{height:240px}
+    .vc-routes-head,.vc-route-row{grid-template-columns:1fr 1fr auto}
+    .vc-routes-head span:nth-child(3),.vc-route-row .vc-route-price{font-size:0.8rem}
+    .vc-route-select-btn{padding:5px 8px;font-size:0.72rem}
+}
+
+/* ============================================================
+   PLACEHOLDER GRAPHIC
+   Shown until a real photo is set as the vehicle's featured image.
+============================================================ */
+.vc-photo-placeholder,
+.vc-card-img-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    min-height: 160px;
+    background: linear-gradient(150deg, #eef3ee 0%, #e2ebe4 100%);
+    color: rgba(26, 60, 46, 0.34);
+    font-size: 0;
+}
+.vc-ph-svg { width: 46%; max-width: 190px; height: auto; }
+.vc-card-img-placeholder .vc-ph-svg { max-width: 130px; }

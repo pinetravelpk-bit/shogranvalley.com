@@ -1,0 +1,40 @@
+/*
+Theme Name:  Shogran Valley
+Theme URI:   https://shogranvalley.com/
+Author:      Shogran Valley
+Author URI:  https://shogranvalley.com/
+Description: A fully SEO & GEO optimized travel theme for Shogran Valley — featuring hotel listings, tour packages, destination guides, and booking functionality. Built for Kaghan Valley tourism.
+Version:     3.3.0
+Requires at least: 6.0
+Tested up to:      6.5
+Requires PHP:      8.0
+License:           GNU General Public License v2 or later
+License URI:       https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain:       shogran-valley
+Tags: travel, tourism, booking, hotels, tours, seo, geo, responsive, full-width-template, custom-menu, featured-images, threaded-comments, translation-ready
+*/
+
+/* ============================================
+   SHOGRAN VALLEY WORDPRESS THEME
+   Version:     3.0.0
+   Full styles in assets/css/main.css
+============================================ */
+
+:root {
+  --forest:       #1a3c2e;
+  --forest-light: #2d6449;
+  --meadow:       #4a8c5c;
+  --gold:         #d4a843;
+  --gold-light:   #f0c84a;
+  --cream:        #faf6ef;
+  --stone:        #f2ede4;
+  --text-dark:    #1c1c1e;
+  --text-mid:     #4a5568;
+  --text-light:   #718096;
+  --white:        #ffffff;
+  --shadow-sm:    0 2px 12px rgba(26,60,46,0.08);
+  --shadow-md:    0 8px 32px rgba(26,60,46,0.15);
+  --shadow-lg:    0 20px 60px rgba(26,60,46,0.2);
+  --radius:       16px;
+  --radius-sm:    8px;
+}

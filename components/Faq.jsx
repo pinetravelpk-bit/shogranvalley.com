@@ -1,0 +1,3 @@
+import {plain} from '../lib/content.mjs';
+/* Visible Q&A block (paired with FAQPage JSON-LD). First answer open; all answers are in the HTML for crawlers. */
+export function FAQ({items,title='Frequently asked questions',id='faq',links=true}){if(!items?.length)return null;return <section className="faq-section" id={id} aria-labelledby={id+'-title'}><div className="eyebrow">QUICK ANSWERS</div><h2 id={id+'-title'}>{title}</h2><div className="faq-list">{items.map((x,i)=><details key={x.q} open={i===0}><summary><h3>{plain(x.q)}</h3><span aria-hidden="true">+</span></summary><div className="faq-answer"><p>{plain(x.a)}</p>{links&&x.href&&<a href={x.href}>Read the full guide →</a>}</div></details>)}</div></section>}

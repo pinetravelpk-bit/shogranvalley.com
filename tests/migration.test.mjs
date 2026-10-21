@@ -1,0 +1,50 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
+import crypto from 'node:crypto';
+import {spawn} from 'node:child_process';
+import sharp from 'sharp';
+import {todayISO,nextDate} from '../lib/hotel-booking.mjs';
+import {field,json,plain} from '../lib/content.mjs';
+const seed=JSON.parse(fs.readFileSync('data/seed.json','utf8'));
+const origin='http://127.0.0.1:3187';
+const temp=fs.mkdtempSync(path.join(os.tmpdir(),'sv-integration-'));
+const password=crypto.randomBytes(24).toString('hex'),salt=crypto.randomBytes(24).toString('hex');
+fs.writeFileSync(path.join(temp,'admin.json'),JSON.stringify({username:'admin',salt,hash:crypto.scryptSync(password,salt,64).toString('hex')}));
+let server,logs='',cookie='';
+async function start(){server=spawn(process.execPath,['node_modules/next/dist/bin/next','start','-H','127.0.0.1','-p','3187'],{env:{...process.env,DATA_DIR:temp,APP_ORIGIN:origin},stdio:['ignore','pipe','pipe']});server.stdout.on('data',b=>{logs+=b;fs.appendFileSync('/tmp/sv-test-server.log',b)});server.stderr.on('data',b=>{logs+=b;fs.appendFileSync('/tmp/sv-test-server.log',b)});for(let i=0;i<25;i++){try{const r=await fetch(origin+'/admin/',{signal:AbortSignal.timeout(2000)});if(r.status===200)return}catch{}await new Promise(r=>setTimeout(r,100))}throw Error('Server failed: '+logs)}
+async function stop(){if(server&&!server.killed&&server.exitCode===null){const p=new Promise(r=>server.once('exit',r));server.kill('SIGTERM');await p}}
+const get=(p,auth=false)=>fetch(origin+p,{redirect:'manual',headers:auth?{cookie}:{}});
+const post=(p,body,auth=false,from=origin)=>fetch(origin+p,{method:'POST',headers:{'Content-Type':'application/json',Origin:from,...(auth?{cookie}:{})},body:JSON.stringify(body)});
+test('Production migration and administration',async t=>{try{await start();
+ await t.test('Every published imported URL serves a page',async()=>{for(const r of seed.records.filter(r=>r.status==='publish'&&!r.protected)){const res=await fetch(origin+r.path);assert.equal(res.status,200,r.path);const text=await res.text();assert.match(text,/<h1[ >]/,r.path);assert.match(text,/rel="canonical"/,r.path)}});
+ await t.test('Taxonomy archive routes work',async()=>{for(const r of seed.taxonomies){const res=await get(r.path);assert.equal(res.status,200,r.path)}});
+ await t.test('Legacy redirects retain paths and query strings',async()=>{for(const r of seed.redirects){const res=await get(r.source+'?utm_source=test');assert.equal(res.status,301,r.source);const url=new URL(res.headers.get('location'),origin);assert.equal(url.pathname,r.destination);assert.equal(url.searchParams.get('utm_source'),'test');assert.equal((await get(r.destination)).status,200,r.destination)}});
+ await t.test('Sitemap, robots and unresolved URLs are truthful',async()=>{const r=await get('/sitemap.xml');assert.equal(r.status,200);const xml=await r.text();assert.ok(!xml.includes('/admin/'));assert.ok(!xml.includes('/privacy-policy/'));for(const p of seed.unresolvedSitemap)assert.equal((await get(p)).status,seed.redirects.some(r=>r.source===p)?301:404,p);assert.equal((await get('/not-an-existing-page/')).status,404);assert.equal((await get('/blog/page/2/')).status,200);assert.equal((await get('/blog/page/999/')).status,404);assert.match(await (await get('/robots.txt')).text(),/Disallow: \/admin\//)});
+ await t.test('Private data requires authentication and origin checking',async()=>{assert.equal((await get('/api/admin/')).status,401);assert.equal((await post('/api/admin/',{action:'settings',settings:{siteName:'bad'}})).status,401);assert.equal((await post('/api/login/',{username:'admin',password},false,'https://untrusted.example')).status,403);const r=await post('/api/login/',{username:'admin',password});assert.equal(r.status,200);cookie=r.headers.get('set-cookie').split(';')[0];assert.match(r.headers.get('set-cookie'),/HttpOnly/i);assert.equal((await get('/api/admin/',true)).status,200);for(const p of ['/create-invoice/','/room-availability/'])assert.equal((await get(p)).status,307)});
+ let reference;
+ await t.test('Booking enquiry validates and persists',async()=>{assert.equal((await post('/api/booking/',{name:'Test'})).status,400);const r=await post('/api/booking/',{name:'Integration test',phone:'+923001234567',checkin:nextDate(todayISO()),checkout:nextDate(nextDate(todayISO())),guests:2,message:'Integration test only'});assert.equal(r.status,200);reference=(await r.json()).reference;const d=await(await get('/api/admin/',true)).json();assert.ok(d.bookings.some(b=>b.fields._ref===reference));assert.ok(!(await(await get('/')).text()).includes(reference))});
+ await t.test('Hotel enquiries validate room, dates and capacity; server computes the estimate',async()=>{
+ const hotel=seed.records.find(r=>r.type==='sv_hotel'),room=json(field(hotel,'rooms_json'))[0];
+ const body={name:'Hotel integration',phone:'+923001234567',recordId:hotel.id,room:plain(room.name),checkin:nextDate(todayISO()),checkout:nextDate(nextDate(todayISO())),guests:2,rooms:2,estimate:1};
+ for(const patch of [{room:'Invented room'},{checkout:''},{guests:999},{guests:Number(room.capacity)*2+1},{rooms:0}])assert.equal((await post('/api/booking/',{...body,...patch})).status,400);
+ const response=await post('/api/booking/',body);assert.equal(response.status,200);const result=await response.json();assert.equal(result.estimate.total,Number(room.base_rate)*2);assert.equal(result.estimate.nights,1);
+ const d=await(await get('/api/admin/',true)).json(),saved=d.bookings.find(b=>b.fields._ref===result.reference);assert.equal(saved.fields._rooms,2);assert.equal(saved.fields._nights,1);assert.equal(saved.fields._estimate,Number(room.base_rate)*2);assert.equal(saved.fields._status,'pending');
+ });
+ await t.test('Invoices are created once, remain private, validate totals and download as PDF',async()=>{
+ const d=await(await get('/api/admin/',true)).json(),b=d.bookings.find(b=>b.fields._name==='Hotel integration');assert.ok(d.invoiceDrafts.some(i=>i.bookingId===b.id));
+ assert.equal((await get('/api/invoice/?booking='+b.id+'&format=pdf')).status,401);
+ assert.equal((await post('/api/invoice/',{bookingId:b.id},true,'https://untrusted.example')).status,403);
+ let res=await post('/api/invoice/',{bookingId:b.id},true);assert.equal(res.status,200);const invoice=await res.json();
+ res=await post('/api/invoice/',{bookingId:b.id},true);assert.equal((await res.json()).id,invoice.id);
+ assert.equal((await post('/api/invoice/',{bookingId:b.id,invoice:{...invoice,advance:999999999}},true)).status,400);
+ assert.equal((await post('/api/invoice/',{bookingId:b.id,invoice:{...invoice,status:'issued',items:[{description:'Room',nights:1,quantity:1,rate:0}]}},true)).status,400);
+ const pdf=await get('/api/invoice/?booking='+b.id+'&format=pdf',true);assert.equal(pdf.status,200);assert.match(pdf.headers.get('content-type'),/application\/pdf/);assert.equal(Buffer.from(await pdf.arrayBuffer()).subarray(0,4).toString(),'%PDF');assert.match(pdf.headers.get('cache-control'),/no-store/);
+ });
+ await t.test('Bundled originals and on-demand thumbnail routes work',async()=>{const originals=seed.media.filter(m=>/\.(jpe?g|png|webp|gif|avif)$/i.test(m.path));for(const m of originals)assert.ok(fs.existsSync(path.join('media/uploads',m.path.replace('/wp-content/uploads/',''))),m.path);const m=originals.find(m=>m.variants.some(v=>!fs.existsSync(path.join('media/uploads',v.replace('/wp-content/uploads/','')))&&/-\d+x\d+\.jpg$/.test(v)));const sample=originals[0];assert.equal((await get(sample.path)).status,200,sample.path);if(m){const v=m.variants.find(v=>!fs.existsSync(path.join('media/uploads',v.replace('/wp-content/uploads/','')))&&/-\d+x\d+\.jpg$/.test(v));assert.equal((await get(v)).status,200,v)}});
+ await t.test('Image replacement preserves original and thumbnail URLs',async()=>{const m=seed.media.find(m=>m.path.endsWith('.jpg')&&m.variants.length);const bytes=await sharp({create:{width:64,height:48,channels:3,background:'#183d2e'}}).jpeg().toBuffer();const body=new FormData();body.set('id',String(m.id));body.set('file',new Blob([bytes],{type:'image/jpeg'}),'test.jpg');const r=await fetch(origin+'/api/media/',{method:'POST',headers:{Origin:origin,cookie},body});assert.equal(r.status,200,await r.text());assert.equal((await get(m.path)).status,200);const variant=m.variants.find(v=>/-\d+x\d+\.jpg$/.test(v));if(variant)assert.equal((await get(variant)).status,200);assert.equal((await fetch(origin+'/api/media/',{method:'POST',headers:{Origin:origin},body})).status,401)});
+ await t.test('Content edits and URL changes produce working redirects',async()=>{const record={title:'Temporary integration page',path:'/integration-test/',type:'page',status:'publish',content:'<p>Saved page content</p><script>alert(1)</script>',meta:{}};assert.equal((await post('/api/admin/',{action:'record',record},true)).status,200);const text=await(await get(record.path)).text();assert.ok(text.includes('Saved page content'));assert.ok(!text.includes('<script>alert(1)</script>'));let d=await(await get('/api/admin/',true)).json();const r=d.records.find(r=>r.path===record.path);assert.equal((await post('/api/admin/',{action:'record',record:{...r,path:'/integration-renamed/'}},true)).status,200);assert.equal((await get(record.path)).status,301);assert.equal((await get('/integration-renamed/')).status,200)});
+ await t.test('Data survives server restart and logout revokes session',async()=>{await stop();await start();const d=await(await get('/api/admin/',true)).json();assert.ok(d.bookings.some(b=>b.fields._ref===reference));assert.equal((await get('/integration-renamed/')).status,200);assert.equal((await post('/api/logout/',{},true)).status,200);assert.equal((await get('/api/admin/',true)).status,401)});
+ }finally{await stop();fs.rmSync(temp,{recursive:true,force:true})}});

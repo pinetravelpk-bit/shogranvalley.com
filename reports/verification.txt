@@ -1,0 +1,25 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> shogran-valley-nextjs@1.0.0 test
+> node --test tests/*.test.mjs
+
+▶ Production migration and administration
+  ✔ Every published imported URL serves a page (4273.132214ms)
+  ✔ Taxonomy archive routes work (4239.441066ms)
+  ✔ Legacy redirects retain paths and query strings (1246.168363ms)
+  ✔ Sitemap, robots and unresolved URLs are truthful (174.526768ms)
+  ✔ Private data requires authentication and origin checking (201.50125ms)
+  ✔ Booking enquiry validates and persists (109.592958ms)
+  ✔ Bundled originals and on-demand thumbnail routes work (44.791379ms)
+  ✔ Image replacement preserves original and thumbnail URLs (38.454265ms)
+  ✔ Content edits and URL changes produce working redirects (156.598652ms)
+  ✔ Data survives server restart and logout revokes session (652.838882ms)
+✔ Production migration and administration (11616.560472ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 11
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 11772.781798
