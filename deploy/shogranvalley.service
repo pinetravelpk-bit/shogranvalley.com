@@ -1,0 +1,25 @@
+[Unit]
+Description=Shogran Valley website (Next.js)
+After=network.target
+
+[Service]
+Type=simple
+User=shogran
+Group=shogran
+WorkingDirectory=/var/www/shogranvalley
+Environment=NODE_ENV=production
+Environment=DATA_DIR=/var/lib/shogranvalley
+Environment=PORT=3000
+Environment=HOSTNAME=127.0.0.1
+ExecStart=/usr/bin/node node_modules/next/dist/bin/next start -H 127.0.0.1 -p 3000
+Restart=always
+RestartSec=5
+# Hardening: the app may only write to its data folder.
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/shogranvalley /var/www/shogranvalley/.next
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
