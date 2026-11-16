@@ -3,6 +3,8 @@ import {readData} from '../../lib/store.mjs';
 import {publicRecords,normalizePath,plain,imageFor,description} from '../../lib/content.mjs';
 import {recordMeta,destinationMeta,listingMeta,buildMeta,buildGraph,recordEntities,recordFaqs,inlineFaqs,crumbsForRecord,canonicalPath,destinationBySlug,destinationEntity,homeEntities,itemListNode,jsonLd,HOME_FAQ,LISTINGS,abs,leadText} from '../../lib/seo.mjs';
 import {Shell,Home,Listing,Detail,Destination,BookingPage} from '../../components/Site';
+import {GuideSection} from '../../components/Guide';
+import {loadGuide} from '../../lib/guides.mjs';
 export const dynamic='force-dynamic';
 
 const LISTING_TYPES={'hotels':'sv_hotel','tours':'sv_tour','rent-a-car':'sv_vehicle','blog':'post','shop':'product'};
@@ -41,30 +43,34 @@ export async function generateMetadata({params,searchParams}){
 export default async function Page({params,searchParams}){
  const {slug=[]}=await params,q=await searchParams;const data=readData();const v=resolve(data,slug,q);
  let view,graph;
+ // Long-form guide for this URL (content/guides), shown inside <main> and added to the FAQ schema.
+ const guide=['home','book','destination'].includes(v.kind)||(v.kind==='listing'&&v.pg===1&&!v.hasQuery)||(v.kind==='record'&&canonicalPath(v.r,data)===v.r.path)?loadGuide(v.kind==='record'?v.r.path:v.path):null;
+ const gfaq=guide?.faqs||[];
+ const gnode=g=>guide&&<GuideSection guide={guide} className={g}/>;
  switch(v.kind){
   case 'protected':redirect('/admin/');
   case 'missing':notFound();
   case 'home':{
-   view=<Home data={data}/>;
-   graph=buildGraph(data,{path:'/',title:'Shogran Valley: Hotels, Tours & Jeeps in Shogran, Kaghan',description:'Hotels, tour packages, car and 4×4 jeep rental and travel guides for Shogran, Siri Paye and the Kaghan Valley.',entities:homeEntities(data),faqs:HOME_FAQ});break}
+   view=<Home data={data} guide={gnode('container')}/>;
+   graph=buildGraph(data,{path:'/',title:'Shogran Valley: Hotels, Tours & Jeeps in Shogran, Kaghan',description:'Hotels, tour packages, car and 4×4 jeep rental and travel guides for Shogran, Siri Paye and the Kaghan Valley.',entities:homeEntities(data),faqs:[...HOME_FAQ,...gfaq]});break}
   case 'listing':{
    if(!Number.isInteger(v.pg)||v.pg<1||v.pg>Math.max(1,Math.ceil(v.rows.length/12)))notFound();
-   view=<Listing title={v.title} records={v.rows} data={data} query={String(q.q||'')} filters={q} page={v.pg} basePath={v.base}/>;
-   const L=LISTINGS[v.base];graph=buildGraph(data,{path:v.path,title:L?.name||v.title,description:L?.description||v.title,pageType:'CollectionPage',crumbs:[['Home','/'],[L?.name||v.title,v.base]],entities:[itemListNode(data,v.path,v.rows.slice((v.pg-1)*12,v.pg*12+18))]});break}
-  case 'book':{view=<BookingPage/>;graph=buildGraph(data,{path:'/book/',title:LISTINGS['/book/'].name,description:LISTINGS['/book/'].description,pageType:'ContactPage',crumbs:[['Home','/'],['Book','/book/']]});break}
+   view=<Listing title={v.title} records={v.rows} data={data} query={String(q.q||'')} filters={q} page={v.pg} basePath={v.base} guide={gnode('container')}/>;
+   const L=LISTINGS[v.base];graph=buildGraph(data,{path:v.path,title:L?.name||v.title,description:L?.description||v.title,pageType:'CollectionPage',crumbs:[['Home','/'],[L?.name||v.title,v.base]],entities:[itemListNode(data,v.path,v.rows.slice((v.pg-1)*12,v.pg*12+18))],faqs:gfaq});break}
+  case 'book':{view=<BookingPage guide={gnode('container')}/>;graph=buildGraph(data,{path:'/book/',title:LISTINGS['/book/'].name,description:LISTINGS['/book/'].description,pageType:'ContactPage',crumbs:[['Home','/'],['Book','/book/']],faqs:gfaq});break}
   case 'taxonomy':{
    if(!Number.isInteger(v.pg)||v.pg<1||v.pg>Math.max(1,Math.ceil(v.rows.length/12)))notFound();
    view=<Listing title={v.tax.name} records={v.rows} data={data} page={v.pg} basePath={v.tax.path}/>;
    graph=buildGraph(data,{path:v.path,title:v.tax.name,description:v.tax.description||v.tax.name,pageType:'CollectionPage',crumbs:[['Home','/'],[plain(v.tax.name),v.tax.path]],entities:[itemListNode(data,v.path,v.rows.slice(0,30))]});break}
   case 'destination':{
    if(v.alias)permanentRedirect(`/destination/${v.d.slug}/`);
-   view=<Destination d={v.d} data={data}/>;
+   view=<Destination d={v.d} data={data} guide={gnode('container')}/>;
    const crumbs=[['Home','/'],['Destinations','/#explore'],[v.d.name,`/destination/${v.d.slug}/`]];
-   graph=buildGraph(data,{path:`/destination/${v.d.slug}/`,title:v.d.name,description:v.d.summary,crumbs:crumbs.filter(c=>c[1]!=='/#explore'),image:v.d.img?'/wp-content/themes/shogran-valley/assets/images/destinations/'+v.d.img:null,entities:[destinationEntity(v.d,data)],faqs:v.d.faqs});break}
+   graph=buildGraph(data,{path:`/destination/${v.d.slug}/`,title:v.d.name,description:v.d.summary,crumbs:crumbs.filter(c=>c[1]!=='/#explore'),image:v.d.img?'/wp-content/themes/shogran-valley/assets/images/destinations/'+v.d.img:null,entities:[destinationEntity(v.d,data)],faqs:[...(v.d.faqs||[]),...gfaq]});break}
   case 'record':{
    const r=v.r;const canon=canonicalPath(r,data);const url=abs(data,canon);
-   view=<Detail r={r} data={data}/>;
-   if(canon===r.path){const faqs=[...recordFaqs(r),...inlineFaqs(r.content)];const isAbout=normalizePath(r.path)==='/about/';
+   view=<Detail r={r} data={data} guide={gnode(r.type==='sv_hotel'?'hotel-content-section':'container')}/>;
+   if(canon===r.path){const faqs=[...recordFaqs(r),...inlineFaqs(r.content),...gfaq];const isAbout=normalizePath(r.path)==='/about/';
     graph=buildGraph(data,{path:r.path,title:plain(r.title),description:leadText(description(r)),pageType:isAbout?'AboutPage':'WebPage',crumbs:crumbsForRecord(r),image:imageFor(data,r),entities:recordEntities(r,data,url),faqs,published:r.date,modified:r.modified||r.date})}
    break}
  }
