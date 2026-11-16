@@ -15,7 +15,7 @@ export function TravelHero({settings}){
  useEffect(()=>{const small=matchMedia('(max-width: 900px)').matches,save=navigator.connection?.saveData;setSrc(small||save?FILM.sd:FILM.hd)},[]);
  useEffect(()=>{if(paused||reduced||hover)return;const timer=setInterval(()=>{if(!document.hidden)setIndex(i=>(i+1)%slides.length)},SLIDE_MS);return()=>clearInterval(timer)},[paused,reduced,hover,index]);
  useEffect(()=>{const v=video.current;if(!v)return;const sync=()=>{if(paused||reduced||document.hidden)v.pause();else v.play().catch(()=>{})};
-  // Never play past 0:57 — jump back to the start for a seamless loop.
+  // Never play past 0:57 - jump back to the start for a seamless loop.
   const guard=()=>{if(v.currentTime>=LOOP_END){v.currentTime=0;v.play().catch(()=>{})}};
   const playing=()=>setReady(true);
   sync();v.addEventListener('timeupdate',guard);v.addEventListener('playing',playing);document.addEventListener('visibilitychange',sync);
